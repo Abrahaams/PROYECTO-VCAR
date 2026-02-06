@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toyota Yaris - Importadora Méndez</title>
+    <link rel="stylesheet" href="../css/carro.css" />
+  </head>
+  <body>
+    <nav class="sub-nav">
+      <div class="container sub-nav-container">
+        <div class="contact-info">
+          <img src="../img/icon-gmail.png" alt="Email" />
+          <a href="mailto:importadoramendez@gmail.com"
+            >importadoramendez@gmail.com</a
+          >
+        </div>
+        <div class="contact-info">
+          <img src="../img/icon-whatsApp.png" alt="WhatsApp" />
+          <a href="https://wa.me/50200000000">0000-0000</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="main-header">
+      <div class="container nav-container">
+        <img src="../img/logo2.png" alt="logo" class="logo" />
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#carros">Autos</a></li>
+          <li><a href="#">¿Qué deseas?</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="vehicle-page container">
+      <div class="carousel-container">
+        <div class="carousel" id="mainCarousel">
+          <img src="../img-carros/car-toyota-1.jpg" class="active" />
+          <img src="../img-carros/car-toyota-2.jpg" />
+          <img src="../img-carros/car-toyota-3.jpg" />
+          <img src="../img-carros/car-toyota-4.jpg" />
+          <img src="../img-carros/car-toyota-5.jpg" />
+          <img src="../img-carros/car-toyota-6.jpg" />
+
+          <button class="nav-btn prev" onclick="changeSlide(-1)">
+            &#10094;
+          </button>
+          <button class="nav-btn next" onclick="changeSlide(1)">
+            &#10095;
+          </button>
+        </div>
+
+        <div class="thumbnails" id="thumbBar">
+          <div class="thumb-item">
+            <img
+              src="../img-carros/car-toyota-1.jpg"
+              class="active"
+              onclick="currentSlide(0)"
+            />
+          </div>
+          <div class="thumb-item">
+            <img
+              src="../img-carros/car-toyota-2.jpg"
+              onclick="currentSlide(1)"
+            />
+          </div>
+          <div class="thumb-item">
+            <img
+              src="../img-carros/car-toyota-3.jpg"
+              onclick="currentSlide(2)"
+            />
+          </div>
+          <div class="thumb-item">
+            <img
+              src="../img-carros/car-toyota-4.jpg"
+              onclick="currentSlide(3)"
+            />
+          </div>
+          <div class="thumb-item">
+            <img
+              src="../img-carros/car-toyota-5.jpg"
+              onclick="currentSlide(4)"
+            />
+          </div>
+          <div class="thumb-item">
+            <img
+              src="../img-carros/car-toyota-6.jpg"
+              onclick="currentSlide(5)"
+            />
+          </div>
+        </div>
+      </div>
+
+      <aside class="vehicle-info">
+        <h2>Toyota Yaris</h2>
+        <p class="vin">VIN: WBAJA9C59JB******</p>
+
+        <ul class="specs-list">
+          <li><span>Millas:</span> <strong>133,790 mi</strong></li>
+          <li><span>Modelo:</span> <strong>2008</strong></li>
+          <li><span>Motor:</span> <strong>1.5L</strong></li>
+          <li><span>Transmisión:</span> <strong>Automática</strong></li>
+          <li><span>Bolsas:</span> <strong>Completas</strong></li>
+          <li><span>Color:</span> <strong>Azul</strong></li>
+          <li class="price-row">
+            <span>Precio:</span> <strong class="price">Q24,000</strong>
+          </li>
+        </ul>
+
+        <button
+          class="action-btn"
+          onclick="window.location.href = 'https://wa.me/50200000000'"
+        >
+          Consultar con el vendedor
+        </button>
+      </aside>
+    </main>
+
+    <script>
+      // Lógica del Menú Móvil
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+
+      // Lógica del Carrusel
+      let currentIdx = 0;
+      const slides = document.querySelectorAll("#mainCarousel img");
+      const thumbs = document.querySelectorAll("#thumbBar img");
+
+      function showSlide(n) {
+        slides.forEach((img) => img.classList.remove("active"));
+        thumbs.forEach((img) => img.classList.remove("active"));
+
+        currentIdx = (n + slides.length) % slides.length;
+
+        slides[currentIdx].classList.add("active");
+        thumbs[currentIdx].classList.add("active");
+
+        // Auto-scroll de miniaturas en móvil
+        thumbs[currentIdx].parentElement.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+
+      function changeSlide(n) {
+        showSlide(currentIdx + n);
+      }
+      function currentSlide(n) {
+        showSlide(n);
+      }
+    </script>
+  </body>
+</html>
