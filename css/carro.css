@@ -1,0 +1,169 @@
+/* ============================================================
+   IMPORTADORA MÉNDEZ — carro.css (vehicle detail page)
+   Requiere css/shared.css
+   ============================================================ */
+
+/* ─── PAGE HERO BANNER ───────────────────────────────────── */
+.page-hero {
+  background: linear-gradient(135deg, var(--gris-dark) 0%, #0f0505 100%);
+  border-bottom: 1px solid var(--gris-borde);
+  padding: 32px 0;
+}
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--texto-gris);
+  margin-bottom: 14px;
+}
+.breadcrumb a { color: var(--texto-gris); transition: color var(--transition); }
+.breadcrumb a:hover { color: var(--dorado); }
+.breadcrumb-sep { color: #333; }
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  letter-spacing: 2px; color: var(--blanco);
+  line-height: 1;
+}
+.page-hero .hero-sub {
+  color: var(--texto-gris); font-size: 14px;
+  margin-top: 10px; font-weight: 300;
+}
+
+/* ─── VEHICLE PAGE LAYOUT ────────────────────────────────── */
+.vehicle-page {
+  padding: 48px 0 80px;
+}
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+/* ─── CAROUSEL ───────────────────────────────────────────── */
+.carousel-wrap {
+  position: sticky;
+  top: 84px;
+}
+.carousel {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--gris-borde);
+}
+.carousel img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.carousel img.active {
+  display: block;
+  animation: fadeIn 0.35s ease;
+}
+@keyframes fadeIn { from{opacity:0.5} to{opacity:1} }
+.nav-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.65);
+  color: white; border: 1px solid rgba(255,255,255,0.1);
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 10; border-radius: 50%;
+  font-size: 16px;
+  transition: all var(--transition);
+}
+.nav-btn:hover { background: var(--rojo); border-color: var(--rojo); }
+.prev { left: 12px; } .next { right: 12px; }
+.thumbnails {
+  display: flex; gap: 8px;
+  margin-top: 10px;
+  overflow-x: auto; padding-bottom: 4px;
+}
+.thumb-item {
+  flex: 0 0 80px; height: 58px;
+  cursor: pointer; border-radius: 6px; overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color var(--transition);
+  opacity: 0.5;
+}
+.thumb-item.active { border-color: var(--rojo); opacity: 1; }
+.thumb-item:hover { opacity: 0.85; }
+.thumb-item img { width:100%; height:100%; object-fit:cover; display:block; }
+
+/* ─── VEHICLE INFO ───────────────────────────────────────── */
+.vehicle-info {
+  background: var(--gris-card);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.vi-header {
+  padding: 24px 24px 18px;
+  border-bottom: 1px solid #1e1e1e;
+  background: linear-gradient(135deg, #1a0505 0%, var(--gris-card) 100%);
+}
+.vi-header h2 {
+  font-family: var(--font-display);
+  font-size: 2rem; letter-spacing: 1.5px;
+  color: var(--blanco); margin-bottom: 4px;
+}
+.vi-vin { font-size: 11px; color: #555; letter-spacing: 0.5px; }
+.vi-body { padding: 20px 24px; }
+.specs-list { list-style: none; }
+.specs-list li {
+  display: flex; justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 14px;
+}
+.specs-list li:last-child { border-bottom: none; }
+.specs-list li span { color: var(--texto-gris); }
+.specs-list li strong { color: var(--blanco); font-weight: 600; }
+.price-row {
+  margin-top: 8px;
+  padding: 16px;
+  background: #111;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--dorado);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.price-row .pl { font-size: 10px; color: var(--texto-gris); text-transform: uppercase; letter-spacing: 1.5px; }
+.price-row .pv {
+  font-family: var(--font-display);
+  font-size: 2rem; color: var(--dorado);
+  letter-spacing: 1px;
+}
+.vi-footer { padding: 20px 24px; border-top: 1px solid #1e1e1e; }
+.action-btn {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--rojo);
+  color: white; border: none;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 700; font-size: 15px;
+  transition: all var(--transition);
+  box-shadow: 0 4px 16px rgba(185,28,28,0.25);
+}
+.action-btn:hover { background: var(--rojo-hover); transform: translateY(-2px); box-shadow: var(--shadow-rojo); }
+.action-btn svg { width: 20px; height: 20px; }
+.back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--texto-gris); font-size: 13px;
+  margin-top: 14px;
+  transition: color var(--transition);
+}
+.back-link:hover { color: var(--dorado); }
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .vehicle-grid { grid-template-columns: 1fr; }
+  .carousel-wrap { position: static; }
+}
+@media (max-width: 768px) {
+  .vehicle-page { padding: 32px 0 60px; }
+  .vi-header { padding: 20px; }
+  .vi-body { padding: 16px 20px; }
+  .vi-footer { padding: 16px 20px; }
+}
